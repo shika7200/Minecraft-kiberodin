@@ -21,9 +21,38 @@ func initialize_MeshLib():
 	cube_mesh.size =Vector3(cube_size, cube_size, cube_size)
 	var collision_shape = BoxShape.new()
 	collision_shape.extents = cube_mesh.size
+	#ВОТ ЗДЕСЬ ДВЕ СТРОЧКИ СОЗДАНИЯ МАТЕРИАЛА
+	
+	
+	var grass_material = SpatialMaterial.new()
+	grass_material.albedo_texture = load("res://src/Assets/grass.png")
+	var leaves_material = SpatialMaterial.new()
+	leaves_material.albedo_texture = load("res://src/Assets/leaves.png")
+	var wood_material = SpatialMaterial.new()
+	wood_material.albedo_texture = load("res://src/Assets/wood.png")
+	#4 строчки создания кубов с материалом
+	
+	var grass_mesh = ArrayMesh.new()
+	var arrays = cube_mesh.surface_get_arrays(0)
+	grass_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	grass_mesh.surface_set_material(0,grass_material)
+	
+	#ДОбавляем в библотеку!
 	mesh_library.create_item(0)
-	mesh_library.set_item_mesh(0, cube_mesh)
+	mesh_library.set_item_mesh(0, grass_mesh)
 	mesh_library.set_item_shapes(0, [collision_shape])
+	
+	
+	#добавляем leaves в библиотеку
+	var leaves_mesh = ArrayMesh.new()
+	leaves_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	leaves_mesh.surface_set_material(0,leaves_material)
+	
+	#ДОбавляем в библотеку!
+	mesh_library.create_item(1)
+	mesh_library.set_item_mesh(1, leaves_mesh)
+	mesh_library.set_item_shapes(1, [collision_shape])
+	
 	
 	ResourceSaver.save("res://MyMeshLibrary.tres", mesh_library)
 	gridmap.set_mesh_library(mesh_library)
