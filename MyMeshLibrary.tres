@@ -1,0 +1,13 @@
+[gd_resource type="MeshLibrary" load_steps=3 format=2]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=2]
+
+[resource]
+item/0/name = ""
+item/0/mesh = SubResource( 1 )
+item/0/mesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+item/0/shapes = [ SubResource( 2 ), Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 ) ]
+item/0/navmesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )

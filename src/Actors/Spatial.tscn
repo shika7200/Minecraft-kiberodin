@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Actors/KinematicBody.gd" type="Script" id=1]
+[ext_resource path="res://src/Actors/Spatial.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="KinematicBody" type="KinematicBody" parent="."]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.115854, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="KinematicBody/CollisionShape"]
+
+[node name="Camera" type="Camera" parent="KinematicBody/CollisionShape/CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27663, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( -0.28026, -0.232148, 0.93143, 0.870551, 0.347379, 0.348523, -0.404468, 0.908535, 0.10474, -0.104176, -4.76837e-07, -14.1556 )
+
+[node name="GridMap" type="GridMap" parent="."]
+__meta__ = {
+"_editor_clip_": 0
+}
